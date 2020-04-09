@@ -79,6 +79,12 @@ RUN apt-get -y install git sudo
 
 #LSPs
 
+##python
+RUN apt-get install python3.6
+
+##pip
+RUN apt install python3-pip
+
 ##GO
 ENV GO_VERSION 1.11.4
 ENV GOPATH=/usr/local/go-packages
@@ -148,6 +154,9 @@ ENV PATH=$PATH:$GOPATH/bin
 USER root
 
 RUN apt-get update && apt-get -y install bash-completion
+
+## openfaas-cli
+RUN curl -sSL https://cli.openfaas.com | sudo -E sh
 
 ## kubectl
 RUN KUBECTL_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)  && \
